@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import config from '../../lib/config';
+import { setQuery } from '../../slice/querySlice';
 
 export default function SearchBar({ onSuccess }) {
-  const [text, setText] = useState('');
-
+  const query = useSelector((state) => state.query.value);
+  const dispatch = useDispatch()
+  
   const handleInput = (e) => {
-    setText(e.target.value);
+    dispatch(setQuery(e.target.value));
   }
 
   const handleSubmit = async (e) => {
@@ -15,7 +18,7 @@ export default function SearchBar({ onSuccess }) {
     const GIPHY_KEY = process.env.REACT_APP_GIPHY_KEY;
 
     const gifs = await fetch(
-        `${config.GIPHY_BASE_URL}/gifs/search?q=${text}&api_key=${GIPHY_KEY}&limit=${LIMIT}`
+        `${config.GIPHY_BASE_URL}/gifs/search?q=${query}&api_key=${GIPHY_KEY}&limit=${LIMIT}`
       ).then((response) => response.json());
 
     onSuccess(gifs.data);
