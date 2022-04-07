@@ -1,0 +1,21 @@
+.navbar {
+  padding: 16px 0;
+  background-color: salmon;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.navbar__menu {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar__link {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar__link:hover {
+  text-decoration: underline;
+}

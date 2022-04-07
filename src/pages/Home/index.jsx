@@ -10,7 +10,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="container">
       <SearchBar onSuccess={handleSuccessSearch} />
 
       <div className="gifs">
