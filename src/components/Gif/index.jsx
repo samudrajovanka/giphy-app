@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Gif({ url, title }) {
   return (
@@ -13,4 +13,4 @@ export default function Gif({ url, title }) {
 Gif.propTypes = {
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-}
+};

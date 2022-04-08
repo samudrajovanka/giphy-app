@@ -8,19 +8,17 @@ export default function Trending() {
 
   useEffect(() => {
     const getTrendingGifs = async () => {
-      const GIPHY_KEY = process.env.REACT_APP_GIPHY_KEY;
+      const trendingEndPoint = `${config.GIPHY_BASE_URL}/gifs/trending?api_key=${config.GIPHY_KEY}`;
 
-      const gifs = await fetch(
-        `${config.GIPHY_BASE_URL}/gifs/trending?api_key=${GIPHY_KEY}`
-      ).then((response) => response.json());
+      const gifs = await fetch(trendingEndPoint)
+        .then((response) => response.json());
 
       setTrendingGifs(gifs.data);
       setLoading(false);
-    }
+    };
 
     getTrendingGifs();
   }, []);
-  
 
   return (
     <div className="container">
