@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import config from '../../lib/config';
 import { setQuery } from '../../slice/querySlice';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const LIMIT = 12;
 
@@ -26,14 +28,33 @@ export default function SearchBar({ onSuccess }) {
 
   return (
     <form className="form-search" onSubmit={handleSubmit}>
-      <input
+      <TextField
+        id="search-gif-input"
+        label="Search gif"
+        type="search"
+        variant="outlined"
+        className="form-search__input"
+        onChange={handleInput}
+        data-testid="search-gif-input"
+      />
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        disableElevation
+        data-testid="search-gif-button"
+      >
+        Search
+      </Button>
+
+      {/* <input
         type="text"
         placeholder="Search..."
         className="form-search__input"
         required
         onChange={handleInput}
-      />
-      <button type="submit" className="form-search__button">Search</button>
+      /> */}
+      {/* <button type="submit" className="form-search__button">Search</button> */}
     </form>
   )
 }
